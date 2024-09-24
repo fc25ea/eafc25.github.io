@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EA Tax Calculator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+        }
+        .centered {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row centered">
+        <div class="col-md-6">
+            <h3 class="text-center mb-4">EA Tax Calculator</h3>
+            <form onsubmit="return false;">
+                <div class="form-group">
+                    <label for="input1">Inkoop:</label>
+                    <input type="number" class="form-control inkoop" id="input1" placeholder="Voer waarde in...">
+                </div>
+                <div class="form-group">
+                    <label for="input2">Verkoop:</label>
+                    <input type="number" class="form-control verkoop" id="input2" placeholder="Voer waarde in...">
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" onclick="berekenBtn()">Bereken</button>
+                </div>
+                <p id="error-msg" class="text-danger text-center mt-3"></p>
+                <p id="result-msg" class="text-success text-center mt-3"></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function berekenBtn() {
+        const inkoop = parseFloat(document.getElementById('input1').value);
+        const verkoop = parseFloat(document.getElementById('input2').value);
+        const errorMsg = document.getElementById('error-msg');
+        const resultMsg = document.getElementById('result-msg');
+
+        errorMsg.textContent = "";
+        resultMsg.textContent = "";
+
+        if (isNaN(inkoop) || isNaN(verkoop)) {
+            errorMsg.textContent = "Beide velden moeten geldige getallen bevatten!";
+        } else {
+            const verkoopNaBelasting = verkoop - (verkoop * 0.05);
+
+            const winst = verkoopNaBelasting - inkoop;
+
+            if (winst > 0) {
+                resultMsg.textContent = `Winst: ${winst.toFixed(0)} coins`;
+                console.log( `Winst: ${winst.toFixed(0)} coins`);
+            } else if (winst === 0) {
+                resultMsg.textContent = "Winst is 0";
+                console.log('Winst is 0')
+            } else {
+                resultMsg.textContent = `Verlies: ${Math.abs(winst.toFixed(0))} coins`;
+                console.log(`Verlies: ${Math.abs(winst.toFixed(0))} coins`);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
