@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy25 | Tax Calculator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(135deg, #000bbb, #009bbb); 
+        }
+        .centered {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @font-face {
+            font-family: 'eafont'; 
+            src: url('fonts/EASPORTS15.ttf') format('truetype');
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a style="font-size: 30px; font-family: eafont, sans-serif;" class="navbar-brand" href="index.html">EASY<span style="color: red;">25</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tax.html">Tax Calculator</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="snipingbot.html">Sniping Bot</a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row centered">
+            <div class="col-md-6">
+                <h3 style="color: white;" class="text-center mb-4">EA Tax Calculator</h3>
+                <form onsubmit="return false;">
+                    <div class="form-group">
+                        <label style="color: white;" for="input1">Buy:</label>
+                        <input type="number" class="form-control inkoop" id="input1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: white;" for="input2">Sell:</label>
+                        <input type="number" class="form-control verkoop" id="input2" placeholder="">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary" onclick="berekenBtn()">Calculate</button>
+                        <button type="button" class="btn btn-danger ml-2" onclick="resetForm()">Reset</button>
+                    </div>
+                    <p id="error-msg" class="text-danger text-center mt-3"></p>
+                    <p id="result-msg" class="text-success text-center mt-3"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        function berekenBtn() {
+            const inkoop = parseFloat(document.getElementById('input1').value);
+            const verkoop = parseFloat(document.getElementById('input2').value);
+            const errorMsg = document.getElementById('error-msg');
+            const resultMsg = document.getElementById('result-msg');
+    
+            errorMsg.textContent = "";
+            resultMsg.textContent = "";
+    
+            if (isNaN(inkoop) || isNaN(verkoop)) {
+                errorMsg.textContent = "Make sure to fill in everything!";
+            } else {
+                const verkoopNaBelasting = verkoop - (verkoop * 0.05);
+                const winst = verkoopNaBelasting - inkoop;
+    
+                if (winst > 0) {
+                    resultMsg.textContent = `Profit: ${winst.toFixed(0)} coins`;
+                } else if (winst === 0) {
+                    resultMsg.textContent = "Profit: 0";
+                } else {
+                    resultMsg.textContent = `Loss: ${Math.abs(winst.toFixed(0))} coins`;
+                }
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('input1').value = "";
+            document.getElementById('input2').value = "";
+            document.getElementById('error-msg').textContent = "";
+            document.getElementById('result-msg').textContent = "";
+        }
+    </script>
+</body>
+</html>

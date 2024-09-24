@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EA Tax Calculator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(135deg, #000bbb, #009bbb); 
+        }
+        .centered {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @font-face {
+            font-family: 'eafont'; 
+            src: url('fonts/EASPORTS15.ttf') format('truetype');
+        }
+
+        @font-face {
+          font-family: 'eafont'; 
+          src: url('fonts/EASPORTS15.ttf') format('truetype');
+        }
+        .left-text {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            font-family: eafont, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .highlight {
+          color: red;
+          text-decoration: underline;
+        }
+
+        .highlight:hover {
+          color: darkred;
+        }
+
+        .box {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 500px; 
+            height: 400px;
+            border: 1px solid white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .box a {
+            text-align: center;
+            font-family: eafont, sans-serif;
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .box a:hover {
+            color: darkblue;
+        }
+
+        .cloud-download-icon {
+            font-size: 80px;
+            color: green;
+        }
+
+        .input-box textarea {
+            width: 80%;
+            height: 70%;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: sans-serif;
+        }
+
+        .input-box textarea:focus {
+            outline: none;
+            border-color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a style="font-size: 30px; font-family: eafont, sans-serif;" class="navbar-brand" href="index.html">EASY<span style="color: red;">25</span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tax.html">Tax Calculator</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="">Sniping Bot</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="box" style="right: 55%; top: 40%;">
+    <p style="font-size: 20px;">Download Sniping Bot</p>
+    <br>
+    <i style="color: black;" class="bi bi-cloud-download cloud-download-icon"></i>
+    <a href="bot/futautobuyer.zip" download>Download File</a>
+</div>
+
+<div class="box input-box" style="right: 10%; top: 40%;">
+    <p style="font-size: 20px;">Tutorial:</p>
+    <br>
+    <a href="https://youtu.be/So4ZNW3sXi4">YT Link</a>
+</div>
+
+</body>
+</html>
